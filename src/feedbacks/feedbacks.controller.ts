@@ -1,4 +1,14 @@
-import { Controller } from '@nestjs/common';
+import { Controller, Get, Post } from '@nestjs/common';
 
 @Controller('feedbacks')
-export class FeedbacksController {}
+export class FeedbacksController {
+    @Get(':id')
+    getFeedbackById() {
+        return 'getFeedbackById';
+    }
+
+    @Post()
+    createFeedback() {
+        return 'createFeedback';
+    }
+}
