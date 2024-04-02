@@ -1,9 +1,12 @@
 import { Body, Controller, Delete, Get, Param, Post, Put, Query } from '@nestjs/common';
+import { CreateFriendDto } from './dtos/create-friend.dto';
+import { GetFriendsDto } from './dtos/get-friends.dto';
+import { UpdateFriendDto } from './dtos/update-friend.dto';
 
 @Controller('friends')
 export class FriendsController {
     @Get()
-    getFriends(@Query() query: any) {
+    getFriends(@Query() query: GetFriendsDto) {
         console.log(query);
         return 'getFriends';
     }
@@ -15,13 +18,13 @@ export class FriendsController {
     }
 
     @Post()
-    createFriend(@Body() body: any) {
+    createFriend(@Body() body: CreateFriendDto) {
         console.log(body);
         return 'createFriend';
     }
 
     @Put(':id')
-    updateFriend(@Param('id') id: string, @Body() body: any) {
+    updateFriend(@Param('id') id: string, @Body() body: UpdateFriendDto) {
         console.log(id, body);
         return 'updateFriend';
     }

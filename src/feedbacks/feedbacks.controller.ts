@@ -1,4 +1,5 @@
 import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { CreateFeedbackDto } from './dtos/create-feedback.dto';
 
 @Controller('feedbacks')
 export class FeedbacksController {
@@ -9,7 +10,7 @@ export class FeedbacksController {
     }
 
     @Post()
-    createFeedback(@Body() body: any) {
+    createFeedback(@Body() body: CreateFeedbackDto) {
         console.log(body);
         return 'createFeedback';
     }
