@@ -1,14 +1,16 @@
-import { Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 
 @Controller('feedbacks')
 export class FeedbacksController {
     @Get(':id')
-    getFeedbackById() {
+    getFeedbackById(@Param('id') id: string) {
+        console.log(id);
         return 'getFeedbackById';
     }
 
     @Post()
-    createFeedback() {
+    createFeedback(@Body() body: any) {
+        console.log(body);
         return 'createFeedback';
     }
 }

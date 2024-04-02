@@ -1,29 +1,34 @@
-import { Controller, Delete, Get, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put, Query } from '@nestjs/common';
 
 @Controller('friends')
 export class FriendsController {
     @Get()
-    getFriends() {
+    getFriends(@Query() query: any) {
+        console.log(query);
         return 'getFriends';
     }
 
     @Get(':id')
-    getFriendById() {
+    getFriendById(@Param('id') id: string) {
+        console.log(id);
         return 'getFriendById';
     }
 
     @Post()
-    createFriend() {
+    createFriend(@Body() body: any) {
+        console.log(body);
         return 'createFriend';
     }
 
     @Put(':id')
-    updateFriend() {
+    updateFriend(@Param('id') id: string, @Body() body: any) {
+        console.log(id, body);
         return 'updateFriend';
     }
 
     @Delete(':id')
-    deleteFriend() {
+    deleteFriend(@Param('id') id: string) {
+        console.log(id);
         return 'deleteFriend';
     }
 }
