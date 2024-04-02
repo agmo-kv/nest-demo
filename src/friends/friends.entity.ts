@@ -9,6 +9,7 @@ export class Friends {
     name: string;
 
     @Column()
+    // @Exclude()
     age: number;
 
     @AfterInsert()

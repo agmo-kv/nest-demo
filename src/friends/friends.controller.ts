@@ -1,14 +1,16 @@
 import {
-    Body,
-    Controller,
-    Delete,
-    Get,
-    Param,
-    Post,
-    Put,
-    Query,
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Post,
+  Put,
+  Query,
 } from '@nestjs/common';
+import { Serialize } from 'src/interceptors/serialize.interceptor';
 import { CreateFriendDto } from './dtos/create-friend.dto';
+import { FriendDto } from './dtos/friend.dto';
 import { GetFriendsDto } from './dtos/get-friends.dto';
 import { UpdateFriendDto } from './dtos/update-friend.dto';
 import { FriendsService } from './friends.service';
@@ -18,6 +20,8 @@ export class FriendsController {
   constructor(private friendsService: FriendsService) {}
 
   @Get()
+  @Serialize(FriendDto)
+  //   @UseInterceptors(ClassSerializerInterceptor)
   getFriends(@Query() query: GetFriendsDto) {
     console.log(query);
     return this.friendsService.getFriends(query.name);
