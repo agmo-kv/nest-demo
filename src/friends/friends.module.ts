@@ -1,7 +1,10 @@
 import { Module } from '@nestjs/common';
 import { FriendsController } from './friends.controller';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { Friends } from './friends.entity';
 
 @Module({
-  controllers: [FriendsController]
+  imports: [TypeOrmModule.forFeature([Friends])],
+  controllers: [FriendsController],
 })
 export class FriendsModule {}
